@@ -8,6 +8,8 @@ services:
       environment:
         MONGO_INITDB_ROOT_USERNAME: admin
         MONGO_INITDB_ROOT_PASSWORD: password
+      volumes:
+        - db-data:/data/db
     mongo-express:
       image: mongo-express
       ports:
@@ -22,4 +24,7 @@ services:
     redis:
       image: redis:6.2.5
       ports:
-        - 6379:6379
+        - 6380:6380
+volumes:
+  db-data:
+    driver: local
